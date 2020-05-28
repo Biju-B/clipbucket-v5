@@ -62,20 +62,24 @@
 	$time_links=time_links();
 	
 	foreach($sorting_links as $na_me => $name){
-			if ($na_me == $_GET['sort']) 
-				$sort_name = $sorting_links[$na_me];
+        if ($na_me == $_GET['sort']) {
+            $sort_name = $sorting_links[$na_me];
+        }
 	}
 	
 	foreach($time_links as $na_me => $name){
-			if ($na_me == $_GET['time']) 
-				$sort_time = $time_links[$na_me];
+        if ($na_me == $_GET['time']) {
+            $sort_time = $time_links[$na_me];
+        }
 	}
 	
-	if (!$_GET['seo_cat_name']) $catname='All';
-	else $catname = str_replace("-", " ", $_GET['seo_cat_name']);
-	
-	$subtitle = $catname .' &raquo; '. $sort_name .' &raquo; '. $sort_time .' &raquo; Channels';
-	
+	if (!$_GET['seo_cat_name']) {
+        $catname='All';
+    } else {
+        $catname = str_replace("-", " ", $_GET['seo_cat_name']);
+    }
+	$subtitle = $catname .' > '. $sort_name .' > '. $sort_time .' > '.lang('channels');
+
 	subtitle(lang($subtitle));
 	assign('catname', $catname);
 	assign('users', $users);	

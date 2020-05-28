@@ -82,8 +82,8 @@
                 }
             }
 		
-	    $user_s_channel = sprintf(lang(''),$udetails['username']);
-            subtitle($user_s_channel);
+	    $user_s_channel = sprintf(lang('user_s_channel'),$udetails['username']);
+        subtitle($user_s_channel);
 	    assign('user_s_channel',$user_s_channel);
 
             //Setting profile item

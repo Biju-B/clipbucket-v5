@@ -98,11 +98,11 @@
 		$squery = get('query');
 		$squery = strtolower($squery);
 		$squery = ucwords($squery);
-		assign('search_result', $squery);
+		assign('search_result', display_clean($squery));
 		if ($squery == 'clipbucket') {
 			subtitle("Awesomeness...!!");
 		} else {
-			subtitle($search->search_type[$type]['title'].' : '.$squery);
+			subtitle($search->search_type[$type]['title'].' : '.display_clean($squery));
 		}
 	}
 

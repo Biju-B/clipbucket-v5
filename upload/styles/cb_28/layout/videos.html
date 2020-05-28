@@ -73,7 +73,7 @@
 				{$catname = 'All'}
 			{/if}
 
-			<h1>{$catname} | {$selectedview} | {$selectedtime} | Videos</h1>
+			<h1>{display_clean($catname)} | {$selectedview} | {$selectedtime} | {lang code='videos'}</h1>
 			
 			<div class="clearfix row">
 			{if $videos}
