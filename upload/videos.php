@@ -58,9 +58,27 @@
 	$extra_params=NULL;
 	$tag='<li><a #params#>#page#</a><li>';
 	$pages->paginate($total_pages,$page,$link,$extra_params,$tag);
-	if (!$subtitle) {
-		$subtitle = 'videos';
+
+	$sorting_links=sorting_links();
+	$time_links=time_links();
+
+	foreach($sorting_links as $na_me => $name){
+		if ($na_me == $_GET['sort']) 
+			$sort_name = $sorting_links[$na_me];
 	}
+
+	foreach($time_links as $na_me => $name){
+		if ($na_me == $_GET['time']) 
+			$sort_time = $time_links[$na_me];
+	}
+
+	if (!$_GET['seo_cat_name']) $catname='All Categories';
+	else $catname = str_replace("-", " ", $_GET['seo_cat_name']);
+	
+	$subtitle = $catname .' &raquo; '. $sort_name .' &raquo; '. $sort_time .' &raquo; Videos';
+
+	assign('catname', $catname);
+
 	subtitle(lang($subtitle));
 	array_val_assign($assign_arry);
 	template_files('videos.html');

@@ -1,12 +1,12 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="{$lang_obj->lang}">
 	<head>
 		{if in_dev()}
 			{$cache_buster=microtime(true)}
 		{else}
 			{$cache_buster=$Cbucket->version}
 		{/if}
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 		<!-- ClipBucket v{$Cbucket->version} -->
 		<meta name="copyright" content="ClipBucket - Integrated Units 2007 - {$smarty.now|date_format:"%Y"}">
@@ -33,11 +33,17 @@
 		{if isset($ninja_fighting)}
             {ANCHOR place='seo_ninja'}
         {else}
-        	<meta name="keywords" content="{$Cbucket->configs.keywords}">
-			<meta name="description" content="{$Cbucket->configs.description}">
-			<meta name="distribution" content="global">
-
-			<title>{cbtitle}</title>
+        	<link rel="canonical" href="{$baseurl}{$smarty.server.REQUEST_URI}">
+		{if $this_page == 'index'}<meta name="description" content="{$Cbucket->configs.description}">{/if}
+		{if $this_page == 'videos'}<meta name="description" content="Description for videos page.">{/if}
+		{if $this_page == 'watch_video'}<meta name="description" content="{$vdo.description}">{/if}
+		{if $this_page == 'channels'}<meta name="description" content="Description for channels page.">{/if}
+		{if $this_page == 'view_channel'}<meta name="description" content="{$p.profile_desc}">{/if}
+		{if $this_page == 'search_result'}<meta name="description" content="Watch {$search_result} videos.">{/if}
+		{if $this_page == 'view_channel'}<meta name="description" content="{if !$p.profile_desc}The {$user_s_channel}is my personal space here. Visit me!{else}{$p.profile_desc}{/if}">{/if}
+		<meta name="distribution" content="global">
+		
+		<title>{cbtitle}</title>
         {/if}
 
 		<link rel="stylesheet" href="{$theme}/css/bootstrap.min.css?cache={$cache_buster}">
@@ -49,8 +55,8 @@
 		<link rel="stylesheet" href="{$theme}/css/all.css?cache={$cache_buster}">
 		{*/if*}
 
-		<script src="{$theme}/js/jquery-1.11.3.min.js"></script>
-		<script src="/js/ui/jquery-ui-1.12.1.min.js"></script>
+		<script src="{$theme}/js/jquery-3.5.1.min.js"></script>
+		<script src="{$baseurl}js/ui/jquery-ui-1.12.1.min.js"></script>
 		{if isset($__devmsgs)}
 			<link rel="stylesheet" href="/styles/global/jquery_ui.css">
 		{else}
